@@ -1,4 +1,4 @@
-  import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export interface Employee {
   id: number;
@@ -53,41 +53,39 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartments, setSelectedDepartments] = useState<string[]>([]);
   const [selectedRatings, setSelectedRatings] = useState<number[]>([]);
-  const [darkMode, setDarkMode] = useState(true); // Changed to true for dark theme by default
+  const [darkMode, setDarkMode] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const toggleBookmark = (id: number) => {
-    setBookmarkedIds(prev => 
-      prev.includes(id) 
-        ? prev.filter(bookmarkId => bookmarkId !== id)
-        : [...prev, id]
+    setBookmarkedIds((prev) =>
+      prev.includes(id) ? prev.filter((bookmarkId) => bookmarkId !== id) : [...prev, id]
     );
   };
 
   const toggleDarkMode = () => {
-    setDarkMode(prev => !prev);
+    setDarkMode((prev) => !prev);
   };
 
   return (
-    <AppContext.Provider value={{
-      employees,
-      setEmployees,
-      bookmarkedIds,
-      toggleBookmark,
-      searchTerm,
-      setSearchTerm,
-      selectedDepartments,
-      setSelectedDepartments,
-      selectedRatings,
-      setSelectedRatings,
-      darkMode,
-      toggleDarkMode,
-      loading,
-      setLoading
-    }}>
-      <div className={darkMode ? 'dark' : ''}>
-        {children}
-      </div>
+    <AppContext.Provider
+      value={{
+        employees,
+        setEmployees,
+        bookmarkedIds,
+        toggleBookmark,
+        searchTerm,
+        setSearchTerm,
+        selectedDepartments,
+        setSelectedDepartments,
+        selectedRatings,
+        setSelectedRatings,
+        darkMode,
+        toggleDarkMode,
+        loading,
+        setLoading,
+      }}
+    >
+      <div className={darkMode ? 'dark' : ''}>{children}</div>
     </AppContext.Provider>
   );
 };
