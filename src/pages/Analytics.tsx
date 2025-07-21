@@ -37,6 +37,9 @@ function AnalyticsPage() {
   const { bookmarks } = useBookmarks()
 
   useEffect(() => {
+        if (typeof window !== 'undefined') {
+      document.title = 'Analytics'
+    }
     const loadData = async () => {
       try {
         setLoading(true)

@@ -18,6 +18,9 @@ const Dashboard: React.FC = () => {
   } = useAppContext();
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.title = 'Employee Dashboard';
+    }
     const loadEmployees = async () => {
       setLoading(true);
       try {

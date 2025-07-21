@@ -1,9 +1,15 @@
-import React from 'react';
+// import React from 'react';
+import React, { useEffect } from 'react'
 import { useAppContext } from '../context/AppContext';
 import EmployeeCard from '../components/EmployeeCard';
 
 const Bookmarks: React.FC = () => {
   const { employees, bookmarkedIds, darkMode } = useAppContext();
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.title = 'Bookmarks'
+    }
+  }, [])
 
   const bookmarkedEmployees = employees.filter(emp => bookmarkedIds.includes(emp.id));
 
