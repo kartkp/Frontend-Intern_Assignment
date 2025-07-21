@@ -6,47 +6,45 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-interface NavItem {
+type NavItem = {
   path: string;
   label: string;
-  icon: string;
+  icon: ReactNode;
   badge?: number;
-}
+};
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const { darkMode, toggleDarkMode, bookmarkedIds } = useAppContext();
   const location = useLocation();
 
   const navItems: NavItem[] = [
-    { path: '/', label: 'Dashboard', icon: '' },
-    { path: '/bookmarks', label: 'Bookmarks', icon: '', badge: bookmarkedIds.length },
-    { path: '/analytics', label: 'Analytics', icon: '' },
+    { path: '/', label: 'Dashboard', icon: <i className="fi fi-rs-home text-[16px]"></i> },
+    { path: '/bookmarks', label: 'Bookmarks', icon: <i className="fi fi-rs-bookmark text-[16px]"></i>, badge: bookmarkedIds?.length || 0 },
+    { path: '/analytics', label: 'Analytics', icon: <i className="fi fi-rs-chart-pie-alt text-[16px]"></i> },
   ];
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
       <header
         className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-          darkMode
-            ? 'bg-gray-800 border-gray-700'
-            : 'bg-white border-gray-200 shadow-md backdrop-blur-sm'
+          darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200 shadow-md backdrop-blur-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-<Link
-  to="/"
-  className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200"
->
-  <img
-    src="../public/favicon-32x32.png"
-    alt="HR Dashboard Logo"
-    className="w-8 h-8 rounded-lg"
-  />
-  <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-    -Dash
-  </h1>
-</Link>
+            <Link
+              to="/"
+              className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200"
+            >
+              <img
+                src="/favicon-32x32.png"
+                alt="HR Dashboard Logo"
+                className="w-8 h-8 rounded-lg"
+              />
+              <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                -Dash
+              </h1>
+            </Link>
 
             <nav className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => (
@@ -67,9 +65,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {item.label}
                   {item.badge !== undefined && item.badge > 0 && (
                     <span
-                      className={`absolute -top-1 -right-1 w-5 h-5 text-xs rounded-full flex items-center justify-center ${
-                        darkMode ? 'bg-red-500 text-white' : 'bg-red-500 text-white'
-                      }`}
+                      className="absolute -top-1 -right-1 w-5 h-5 text-xs rounded-full flex items-center justify-center bg-red-500 text-white"
                     >
                       {item.badge}
                     </span>
@@ -121,7 +117,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {children}
+      </main>
     </div>
   );
 };
