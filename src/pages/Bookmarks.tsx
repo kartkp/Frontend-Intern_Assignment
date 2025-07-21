@@ -9,7 +9,6 @@ const Bookmarks: React.FC = () => {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div>
         <h1 className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
           Bookmarked Employees
@@ -18,8 +17,6 @@ const Bookmarks: React.FC = () => {
           Your saved employees for quick access
         </p>
       </div>
-
-      {/* Bookmarked Employees */}
       {bookmarkedEmployees.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {bookmarkedEmployees.map((employee) => (
@@ -44,5 +41,4 @@ const Bookmarks: React.FC = () => {
     </div>
   );
 };
-
 export default Bookmarks;
