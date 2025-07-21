@@ -1,5 +1,3 @@
-// src/lib/api.ts
-
 export interface User {
   id: number;
   firstName: string;
@@ -22,11 +20,6 @@ export interface AnalyticsData {
   bookmarkTrends: any[];
 }
 
-/**
- * Fetch users from the API
- * @param limit Number of users to fetch
- * @returns Promise<User[]>
- */
 export const fetchUsers = async (limit = 20): Promise<User[]> => {
   try {
     const response = await fetch(`https://dummyjson.com/users?limit=${limit}`);
@@ -47,11 +40,6 @@ export const fetchUsers = async (limit = 20): Promise<User[]> => {
   }
 };
 
-/**
- * Generate analytics data from users
- * @param users User[]
- * @returns AnalyticsData
- */
 export const generateAnalyticsData = (users: User[]): AnalyticsData => {
   if (!users || users.length === 0) {
     return {
@@ -94,6 +82,7 @@ export const generateAnalyticsData = (users: User[]): AnalyticsData => {
 
   let topDepartment = 'N/A';
   let highestRating = 0;
+
   for (const dept in departmentRatings) {
     const avgRating = departmentRatings[dept] / departmentCounts[dept];
     departmentRatings[dept] = avgRating;
