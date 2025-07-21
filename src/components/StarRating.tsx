@@ -8,17 +8,17 @@ interface StarRatingProps {
   className?: string;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ 
-  rating, 
-  maxRating = 5, 
+const StarRating: React.FC<StarRatingProps> = ({
+  rating,
+  maxRating = 5,
   size = 'md',
   showNumber = false,
-  className = ''
+  className = '',
 }) => {
   const sizeClasses = {
     sm: 'text-sm',
     md: 'text-base',
-    lg: 'text-lg'
+    lg: 'text-lg',
   };
 
   const getRatingColor = (rating: number) => {
@@ -36,14 +36,14 @@ const StarRating: React.FC<StarRatingProps> = ({
   return (
     <div className={`flex items-center space-x-2 ${className}`}>
       <div className={`flex items-center ${sizeClasses[size]}`}>
-        {[...Array(maxRating)].map((_, index) => (
+        {Array.from({ length: maxRating }).map((_, index) => (
           <span
             key={index}
-            className={`${
-              index < rating 
+            className={
+              index < rating
                 ? getRatingColor(rating)
                 : 'text-gray-300 dark:text-gray-600'
-            }`}
+            }
           >
             ★
           </span>
