@@ -19,18 +19,13 @@ const Bookmarks: React.FC = () => {
       </div>
       {bookmarkedEmployees.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {bookmarkedEmployees.map((employee) => (
+          {bookmarkedEmployees.map(employee => (
             <EmployeeCard key={employee.id} employee={employee} />
           ))}
         </div>
       ) : (
-        <div className={`text-center py-12 ${
-          darkMode ? 'bg-gray-800' : 'bg-gray-50'
-        } rounded-xl`}>
-          {/* <div className="text-6xl mb-4">📚</div> */}
-          <h3 className={`text-lg font-medium mb-2 ${
-            darkMode ? 'text-white' : 'text-gray-900'
-          }`}>
+        <div className={`text-center py-12 ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} rounded-xl`}>
+          <h3 className={`text-lg font-medium mb-2 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
             No bookmarked employees
           </h3>
           <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -41,4 +36,5 @@ const Bookmarks: React.FC = () => {
     </div>
   );
 };
+
 export default Bookmarks;
