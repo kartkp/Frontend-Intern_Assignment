@@ -25,7 +25,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
-      {/* Header */}
       <header
         className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
           darkMode
@@ -35,7 +34,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200">
               <div
                 className={`w-8 h-8 rounded-lg flex items-center justify-center ${
@@ -49,7 +47,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </h1>
             </Link>
 
-            {/* Navigation */}
             <nav className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => (
                 <Link
@@ -80,7 +77,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               ))}
             </nav>
 
-            {/* Dark Mode Toggle */}
             <button
               onClick={toggleDarkMode}
               className={`p-2 rounded-lg transition-colors duration-200 ${
@@ -95,7 +91,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <div className="md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
           <div className="flex justify-around py-2">
             {navItems.map((item) => (
@@ -125,7 +120,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</main>
     </div>
   );
