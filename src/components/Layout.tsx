@@ -34,18 +34,19 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200">
-              <div
-                className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                  darkMode ? 'bg-blue-600' : 'bg-blue-500'
-                }`}
-              >
-                <span className="text-white font-bold text-sm">HR</span>
-              </div>
-              <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                HR Dashboard
-              </h1>
-            </Link>
+<Link
+  to="/"
+  className="flex items-center space-x-3 hover:scale-105 transition-transform duration-200"
+>
+  <img
+    src="../public/favicon-32x32.png"
+    alt="HR Dashboard Logo"
+    className="w-8 h-8 rounded-lg"
+  />
+  <h1 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+    -Dash
+  </h1>
+</Link>
 
             <nav className="hidden md:flex items-center space-x-1">
               {navItems.map((item) => (
