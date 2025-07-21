@@ -1,6 +1,5 @@
 # hr-Dash: 
-Your Modern HR Management Solution
-HR-Dash is a dynamic HR dashboard, meticulously crafted with Next.js, Tailwind CSS, and Zustand for seamless state management. It's designed to empower HR managers with robust tools for tracking employee performance, managing key personnel, and gaining actionable insights.
+hr-Dash is a dynamic HR dashboard, meticulously crafted with Next.js, Tailwind CSS, and Zustand for seamless state management. It's designed to empower HR managers with robust tools for tracking employee performance, managing key personnel, and gaining actionable insights.
 ## Features
 
 ### Dashboard Homepage
