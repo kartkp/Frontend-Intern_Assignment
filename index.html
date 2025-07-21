@@ -3,20 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Preview - Chariot</title>
+    <title>HR-Dash</title>
   </head>
   <body>
     <div id="root"></div>
     <script>
-      /**
-       * DO NOT REMOVE
-       * Sends client-side errors to the chariot-logger defined in vite.config.ts
-       */
       if ("%MODE%" === "development") {
-        // Send to logger and notify parent
         const sendError = (error) => {
-          if (!error?.message) return; // only log errors with a message
-
+          if (!error?.message) return;
           fetch("/@chariot-logger", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -25,15 +19,9 @@
           window.parent.postMessage("error", "*");
         };
 
-        // Catch all errors
         window.addEventListener("error", (e) => sendError(e), true);
-        window.addEventListener(
-          "unhandledrejection",
-          (e) => sendError(e),
-          true
-        );
+        window.addEventListener("unhandledrejection", (e) => sendError(e), true);
 
-        // Catch console.error
         const originalError = console.error;
         console.error = function (...args) {
           originalError.apply(console, args);
