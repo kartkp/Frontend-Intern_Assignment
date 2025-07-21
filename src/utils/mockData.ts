@@ -1,7 +1,7 @@
 import { Employee } from '../context/AppContext';
 
 const departments = [
-  'Engineering', 'Marketing', 'Sales', 'HR', 'Finance', 
+  'Engineering', 'Marketing', 'Sales', 'HR', 'Finance',
   'Operations', 'Design', 'Product', 'Customer Success'
 ];
 
@@ -25,7 +25,7 @@ const feedbackComments = [
 export const generateMockEmployee = (userData: any): Employee => {
   const department = departments[Math.floor(Math.random() * departments.length)];
   const rating = Math.floor(Math.random() * 5) + 1;
-  
+
   return {
     id: userData.id,
     firstName: userData.firstName,
@@ -37,11 +37,13 @@ export const generateMockEmployee = (userData: any): Employee => {
     phone: userData.phone,
     address: userData.address,
     image: userData.image,
-    bio: `${userData.firstName} is a dedicated professional in the ${department} department with ${Math.floor(Math.random() * 10) + 1} years of experience. Known for their attention to detail and collaborative approach.`,
-    projects: Array.from({ length: Math.floor(Math.random() * 4) + 1 }, () => 
+    bio: `${userData.firstName} is a dedicated professional in the ${department} department with ${
+      Math.floor(Math.random() * 10) + 1
+    } years of experience. Known for their attention to detail and collaborative approach.`,
+    projects: Array.from({ length: Math.floor(Math.random() * 4) + 1 }, () =>
       projects[Math.floor(Math.random() * projects.length)]
     ),
-    feedback: Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () => 
+    feedback: Array.from({ length: Math.floor(Math.random() * 3) + 1 }, () =>
       feedbackComments[Math.floor(Math.random() * feedbackComments.length)]
     )
   };
@@ -51,7 +53,6 @@ export const fetchEmployeesData = async (): Promise<Employee[]> => {
   try {
     const response = await fetch('https://dummyjson.com/users?limit=20');
     const data = await response.json();
-    
     return data.users.map((user: any) => generateMockEmployee(user));
   } catch (error) {
     console.error('Error fetching employees:', error);
