@@ -1,17 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-/**
- * Default 404 page, displayed when a user attempts to access a non-existent route.
- */
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error(
-      "404 not found: User attempted to access non-existent route:",
-      location.pathname
-    );
+    console.error("404 not found: User attempted to access non-existent route:", location.pathname);
   }, [location.pathname]);
 
   return (
