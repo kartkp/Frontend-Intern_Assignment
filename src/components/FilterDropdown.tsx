@@ -9,9 +9,9 @@ const FilterDropdown: React.FC = () => {
     setSelectedDepartments,
     selectedRatings,
     setSelectedRatings,
-    darkMode
+    darkMode,
   } = useAppContext();
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +32,7 @@ const FilterDropdown: React.FC = () => {
   const handleDepartmentToggle = (department: string) => {
     setSelectedDepartments(
       selectedDepartments.includes(department)
-        ? selectedDepartments.filter(d => d !== department)
+        ? selectedDepartments.filter((d) => d !== department)
         : [...selectedDepartments, department]
     );
   };
@@ -40,7 +40,7 @@ const FilterDropdown: React.FC = () => {
   const handleRatingToggle = (rating: number) => {
     setSelectedRatings(
       selectedRatings.includes(rating)
-        ? selectedRatings.filter(r => r !== rating)
+        ? selectedRatings.filter((r) => r !== rating)
         : [...selectedRatings, rating]
     );
   };
@@ -63,7 +63,12 @@ const FilterDropdown: React.FC = () => {
         }`}
       >
         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.707A1 1 0 013 7V4z"
+          />
         </svg>
         <span>Filters</span>
         {activeFiltersCount > 0 && (
@@ -82,13 +87,12 @@ const FilterDropdown: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className={`absolute top-full left-0 mt-2 w-80 rounded-lg border shadow-lg z-50 ${
-          darkMode
-            ? 'bg-gray-800 border-gray-600'
-            : 'bg-white border-gray-200'
-        }`}>
+        <div
+          className={`absolute top-full left-0 mt-2 w-80 rounded-lg border shadow-lg z-50 ${
+            darkMode ? 'bg-gray-800 border-gray-600' : 'bg-white border-gray-200'
+          }`}
+        >
           <div className="p-4">
-            {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <h3 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 Filter Employees
@@ -105,11 +109,8 @@ const FilterDropdown: React.FC = () => {
               )}
             </div>
 
-            {/* Departments */}
             <div className="mb-6">
-              <h4 className={`font-medium mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
-                Department
-              </h4>
+              <h4 className={`font-medium mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>Department</h4>
               <div className="space-y-2 max-h-32 overflow-y-auto">
                 {departments.map((department) => (
                   <label
@@ -132,7 +133,6 @@ const FilterDropdown: React.FC = () => {
               </div>
             </div>
 
-            {/* Ratings */}
             <div>
               <h4 className={`font-medium mb-3 ${darkMode ? 'text-gray-200' : 'text-gray-700'}`}>
                 Performance Rating
@@ -153,17 +153,19 @@ const FilterDropdown: React.FC = () => {
                     />
                     <div className="flex items-center space-x-2">
                       <div className="flex">
-                        {[...Array(5)].map((_, index) => (
+                        {Array.from({ length: 5 }).map((_, index) => (
                           <span
                             key={index}
                             className={`text-sm ${
-                              index < rating 
-                                ? rating >= 4 
-                                  ? 'text-green-500' 
-                                  : rating >= 3 
-                                    ? 'text-yellow-500' 
-                                    : 'text-red-500'
-                                : darkMode ? 'text-gray-600' : 'text-gray-300'
+                              index < rating
+                                ? rating >= 4
+                                  ? 'text-green-500'
+                                  : rating >= 3
+                                  ? 'text-yellow-500'
+                                  : 'text-red-500'
+                                : darkMode
+                                ? 'text-gray-600'
+                                : 'text-gray-300'
                             }`}
                           >
                             ★
