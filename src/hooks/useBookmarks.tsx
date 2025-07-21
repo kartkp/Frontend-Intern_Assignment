@@ -2,7 +2,7 @@
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { User } from './types'; // adjust path as needed
+import { User } from './types';
 
 interface BookmarksState {
   bookmarks: User[];
@@ -11,7 +11,6 @@ interface BookmarksState {
   isBookmarked: (userId: number) => boolean;
 }
 
-// Create a Zustand store with persistence
 const useBookmarksStore = create<BookmarksState>()(
   persist(
     (set, get) => ({
